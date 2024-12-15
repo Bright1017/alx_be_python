@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # Check if a commit message is provided as an argument
