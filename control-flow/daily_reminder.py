@@ -11,17 +11,18 @@ reminder = f"Your task: '{task}'"
 # Process the task based on priority using Match Case
 match priority:
     case "high":
-        reminder += " is of high priority"
+        reminder = f"'{task} is of high priority"
     case "medium":
-        reminder += " is of medium priority"
+        reminder = f"'{task} is of medium priority"
     case "low":
-        reminder += " is of low priority"
+        reminder = f"'{task} is of low priority"
     case _:
-        reminder += " has an unknown priority level"
+        reminder = "has an unknown priority level"
 
 # Modify the reminder if the task is time-sensitive
 if time_bound == "yes":
     reminder += " that requires immediate attention today!"
-
+else:
+    print(f"Note: {reminder}. consider completing it when you have free time.")
 # Print the customized reminder
 print(reminder)
