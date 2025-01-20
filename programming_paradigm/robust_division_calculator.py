@@ -21,31 +21,15 @@ This task helps you practice writing error-resistant code, a crucial skill in so
 
 """
 
-
-import sys
-
-def division_calculator():
+def safe_divide(numerator, denominator):
     try:
-        # Ensure there are exactly three arguments: the script name, dividend, and divisor
-        if len(sys.argv) != 3:
-            raise ValueError("Usage: python division_calculator.py <dividend> <divisor>")
-
-        # Parse command line arguments
-        dividend = float(sys.argv[1])
-        divisor = float(sys.argv[2])
-
-        # Perform division
-        result = dividend / divisor
-
-    except ValueError as ve:
-        print(f"Error: {ve}")
+        numerator = float(numerator)
+        denominator = float(denominator)
+        
+        result = numerator / denominator
+        return f"The result of the division is {result:.1f}"
     except ZeroDivisionError:
-        print("Error: Division by zero is not allowed.")
-    except Exception as e:
-        print(f"Unexpected error: {e}")
-    else:
-        print(f"Result: {result}")
-
-if __name__ == "__main__":
-    division_calculator()
+        return "Error: Cannot divide by zero."  
+    except ValueError:
+        return "Error: Please enter numeric values only."
 
