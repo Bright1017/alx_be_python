@@ -1,5 +1,5 @@
 """
-0. Create a Simple Bank Account Class
+Create a Simple Bank Account Class
 mandatory
 Score: 0.0% (Checks completed: 0.0%)
 Objective: Understand the fundamentals of OOP in Python by implementing a BankAccount class that encapsulates banking operations. Use command line arguments to interact with instances of this class.
@@ -19,6 +19,11 @@ deposit should add the specified amount to account_balance.
 withdraw should deduct the amount from account_balance if funds are sufficient, returning True; otherwise, return False and do not alter the balance.
 display_balance should print the current balance in a user-friendly format.
 
+Implementation Notes for you:
+Ensure your BankAccount class in bank_account.py correctly implements the specified functionalities and adheres to the principles of encapsulation.
+Use main.py to test your BankAccount class by performing various operations. Adjust the initial balance as needed for testing different scenarios.
+This task combines learning OOP concepts with practical command line interaction, enhancing your understanding of Python programming.
+
 
 """
 
@@ -28,45 +33,32 @@ display_balance should print the current balance in a user-friendly format.
 class BankAccount:
     def __init__(self, initial_balance=0):
         """
-        Initialize the BankAccount with an optional initial balance.
-        :param initial_balance: The starting balance of the account (default is 0).
+        Initialize a BankAccount instance with an optional initial balance.
+        :param initial_balance: Starting balance of the account (default is 0).
         """
         self.__account_balance = initial_balance
 
     def deposit(self, amount):
         """
-        Deposit a specified amount into the account.
-        :param amount: The amount to deposit (must be positive).
+        Deposit the specified amount into the account.
+        :param amount: The amount to be added to the account balance.
         """
         if amount > 0:
             self.__account_balance += amount
-        else:
-            raise ValueError("Deposit amount must be positive.")
 
     def withdraw(self, amount):
         """
-        Withdraw a specified amount from the account if sufficient funds are available.
-        :param amount: The amount to withdraw (must be positive).
+        Withdraw the specified amount from the account, if sufficient funds exist.
+        :param amount: The amount to be deducted from the account balance.
         :return: True if the withdrawal was successful, False otherwise.
         """
-        if amount > 0:
-            if self.__account_balance >= amount:
-                self.__account_balance -= amount
-                return True
-            else:
-                return False
-        else:
-            raise ValueError("Withdrawal amount must be positive.")
+        if 0 < amount <= self.__account_balance:
+            self.__account_balance -= amount
+            return True
+        return False
 
     def display_balance(self):
         """
-        Print the current account balance in a user-friendly format.
+        Display the current account balance in a user-friendly format.
         """
-        print(f"Current balance: ${self.__account_balance:.2f}")
-
-    def get_balance(self):
-        """
-        Return the current account balance.
-        :return: The current balance as a float.
-        """
-        return self.__account_balance
+        print(f"Current Balance: ${self.__account_balance:.2f}")
